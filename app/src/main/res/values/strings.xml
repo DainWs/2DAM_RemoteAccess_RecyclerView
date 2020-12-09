@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RemoteAccess</string>
+    <string name="action_settings">Settings</string>
+    <string name="pern_name">"Name "</string>
+    <string name="pern_age">"Age "</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="pref_db" translatable="false">DB URL :</string>
+    <string name="pref_connections_title">Connections</string>
+    <string name="pern_id" translatable="false">"ID : "</string>
+</resources>

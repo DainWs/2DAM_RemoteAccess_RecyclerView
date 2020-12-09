@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RemoteAccess</string>
+    <string name="pern_name">"Nombre "</string>
+    <string name="action_settings">Configuración</string>
+    <string name="pern_age">"Edad "</string>
+    <string name="cancel">Cancelar</string>
+    <string name="confirm">Confirmar</string>
+    <string name="pref_connections_title">Conexiones</string>
+</resources>
