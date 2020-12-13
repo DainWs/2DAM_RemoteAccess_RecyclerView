@@ -30,6 +30,7 @@ class MyListFragment : Fragment() {
 
     private lateinit var personas: MutableList<Models>
     private lateinit var root: View
+    private lateinit var prefs: SharedPreferences
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         root = inflater.inflate(R.layout.fragment_item_list, container, false)
@@ -38,20 +39,23 @@ class MyListFragment : Fragment() {
 
         queue = Volley.newRequestQueue(context)
 
-        activity?.getSharedPreferences("pref_settings", Context.MODE_PRIVATE)?.let { make(it) }
+        prefs = ResourceLoader.getPreferences()
 
+        make(prefs)
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        make(prefs)
     }
 
     fun make(pref: SharedPreferences) {
         try {
             personas = mutableListOf<Person>().toMutableList()
-
+            println(pref.contains("dbUrl"))
             val url: String = pref.getString("dbUrl", "http://192.168.1.11/Volley/person.php").toString()
-            if(url.contentEquals("http://192.168.1.11/Volley/person.php")) {
-                pref.edit().putString("dbUrl", "http://192.168.1.11/Volley/person.php")
-            }
-
+            println(url)
             val stringRequest =
                 StringRequest(Request.Method.GET, url, Response.Listener { response ->
                     val jsonArray = JSONArray(response)

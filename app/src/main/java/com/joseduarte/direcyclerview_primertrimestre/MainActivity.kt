@@ -1,10 +1,10 @@
 package com.joseduarte.direcyclerview_primertrimestre
 
 import android.Manifest
-import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -12,19 +12,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.toolbox.HurlStack
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import com.joseduarte.direcyclerview_primertrimestre.models.Models
-import com.joseduarte.direcyclerview_primertrimestre.models.Person
-import com.joseduarte.direcyclerview_primertrimestre.ui.MyItemRecyclerViewAdapter
-import com.joseduarte.direcyclerview_primertrimestre.ui.list.MyListFragment
-import org.json.JSONArray
-import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,10 +22,12 @@ class MainActivity : AppCompatActivity() {
 
         ResourceLoader.setContext(this)
 
+        prefs = PreferenceManager.getDefaultSharedPreferences(this)
+
+        ResourceLoader.setPreferences(prefs)
+
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
-
-        prefs = getSharedPreferences("pref_settings", Context.MODE_PRIVATE)
 
         when {
             ContextCompat.checkSelfPermission(
