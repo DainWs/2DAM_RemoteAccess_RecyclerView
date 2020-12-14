@@ -41,7 +41,6 @@ class MyListFragment : Fragment() {
 
         prefs = ResourceLoader.getPreferences()
 
-        make(prefs)
         return root
     }
 
@@ -54,7 +53,7 @@ class MyListFragment : Fragment() {
         try {
             personas = mutableListOf<Person>().toMutableList()
             println(pref.contains("dbUrl"))
-            val url: String = pref.getString("dbUrl", "http://192.168.1.11/Volley/person.php").toString()
+            val url: String = pref.getString("dbUrl", "http://iesayala.ddns.net/joseDuarte/person.php").toString()
             println(url)
             val stringRequest =
                 StringRequest(Request.Method.GET, url, Response.Listener { response ->
@@ -78,7 +77,6 @@ class MyListFragment : Fragment() {
                 })
 
             queue.add(stringRequest)
-            queue.start()
         }catch (ex: Exception) {
             ex.printStackTrace()
         }
